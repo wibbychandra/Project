@@ -10,6 +10,16 @@ package project.Model;
  * @author Abner
  */
 public class ModelProgram {
+    private String name;
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+    
     public String label = "Please Put Your Information To Get The Result";
     
     public String returnGenderNoun(String gender){
@@ -22,7 +32,7 @@ public class ModelProgram {
         return noun;
     }
     
-    public String returnHealth(String mental){
+    public String returnHealth(String health){
         switch(health){
             case "Demam,Batuk,Nafas Taknormal,Dahak Kental,Lemas,Sinar X":
                 return "Virus Corona";
