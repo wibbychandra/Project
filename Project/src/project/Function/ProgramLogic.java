@@ -5,6 +5,8 @@
  */
 package project.Function;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import project.Model.ModelProgram;
 
 /**
@@ -14,24 +16,13 @@ import project.Model.ModelProgram;
 public class ProgramLogic extends ModelProgram{
      ModelProgram modelProgram = new ModelProgram();
     
-    public String result(String born_date, String health,
-            String gender, ModelProgram mp){
+    public String result(String health, String gender, 
+            ModelProgram mp){
         
         String noun = modelProgram.returnGenderNoun(gender);
         String health_Status = modelProgram.returnHealth(health);
         
-        return "The Name Is " +mp.getName()+
-                ".\n" + noun + " is currently " + health_Status;
+        return "Hallo " +mp.getName()+
+                ".\n" + noun + " Terkena Penyakit " + health_Status;
     }
-    public String result(ModelProgram mp){
-        return "The Name Is " +mp.getName()+ ".";
-    }
-    
-    public String result(ModelProgram mp, String health){
-        String health_status = modelProgram.returnHealth(health);
-        
-        return "The Name Is " +mp.getName()+ " \nis currently "
-                + health_status + ".";
-    }    
 }
-
