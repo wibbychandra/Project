@@ -220,9 +220,6 @@ public class MainFrame extends javax.swing.JFrame {
         Date date = dp_umur.getDate();
         Date now = new Date();
         int age = now.getYear()- date.getYear();
-        if(rb_perempuan.isSelected()){
-            gender = "Female";
-        }
         
         ModelProgram mp = new ModelProgram();
         mp.setName(name);
@@ -234,28 +231,35 @@ public class MainFrame extends javax.swing.JFrame {
             ta_result.setText("Coba Lagi");
         }
         
-//        if(date = 0){
-//            JOptionPane.showMessageDialog(rootPane, "Tolong isi tanggal lahir"
-//                    + " anda.", "Messege", HEIGHT);
-//            ta_result.setText("");
-//        }
-        
         else if (cb_health.getSelectedIndex() ==0){
             JOptionPane.showMessageDialog(rootPane, "Tolong isi keluhan anda"
                     , "Messege", HEIGHT);
             ta_result.setText("Coba Lagi");
         }
         
-        else if (age <= 24){
-            ta_result.setText(result + " , Tolong Isolasi Diri Anda Di Rumah");
+        else if (age <= 24 && rb_laki.isSelected()){
+            ta_result.setText(result + " , Tolong Isolasi Diri Anda Di Rumah."
+            + "\nKasus positif corona pada lelaki di Indonesia sebesar 71%");
         }
         
-        else if (age > 24){
+        else if (age > 24 && rb_laki.isSelected()){
             ta_result.setText(result + " , Silahkan ke rumah sakit terdekat"
-            + " untuk pemeriksaan lebih lanjut.");
+            + " untuk pemeriksaan lebih lanjut." + "\nKasus positif corona pada"
+            + "lelaki di Indonesia sebesar 71%");
         }
         
-        else if(!(name.matches("[a-zA-Z0-9]+"))){
+        else if (age <= 24 && rb_perempuan.isSelected()){
+            ta_result.setText(result + " , Tolong Isolasi Diri Anda Di Rumah"
+            + "\nKasus positif corona pada perempuan di Indonesia sebesar 29%");
+        }
+        
+        else if (age > 24 && rb_perempuan.isSelected()){
+            ta_result.setText(result + " , Silahkan ke rumah sakit terdekat"
+            + " untuk pemeriksaan lebih lanjut." + "\nKasus positif corona pada"
+            + " perempuan di Indonesia sebesar 29%");
+        }
+        
+        if(!(name.matches("[a-zA-Z0-9]+"))){
             JOptionPane.showMessageDialog(rootPane, "Tolong masukan nama anda "
                     + "dengan Alphanumeric saja.", "Messege", HEIGHT);
             ta_result.setText("Coba Lagi");
